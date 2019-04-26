@@ -4,7 +4,6 @@ import {User} from '../user';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Storage} from '@ionic/storage';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -12,9 +11,26 @@ import {Observable} from 'rxjs';
 export class UserService {
 
     usersRef: AngularFirestoreCollection<any>;
+    currentUser: Object = null;
 
     constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private storage: Storage, private router: Router) {
         this.usersRef = this.db.collection('users');
+    }
+
+    initiate() {
+        if (!this.currentUser) {
+            this.storage.get('user').then(user => {
+                if (user) {
+                    this.currentUser = user;
+                    this.redirect('/tabs/tab1');
+                    // this.login(user.email, user.password).then(_ => this.loaded = true);
+                } else {
+                    this.redirect('/login');
+                }
+            });
+        } else {
+            this.redirect('/tabs/tab1');
+        }
     }
 
     getAllUsers() {
@@ -38,8 +54,8 @@ export class UserService {
     loginSuccess(data, password: string) {
         this.getUser(data.user.uid).subscribe(user => {
             user['password'] = password;
-            alert('Welcome ' + user['name']);
             this.storage.set('user', user).then(_ => console.log('user saved...'));
+            this.currentUser = user;
             this.router.navigate(['/tabs/tab1']).then();
         });
     }
@@ -50,6 +66,16 @@ export class UserService {
         } else {
             alert(error.message);
         }
+    }
+
+    signOut() {
+        this.storage.clear().then();
+        this.afAuth.auth.signOut().then();
+        this.redirect('/login')
+    }
+
+    redirect(path: string) {
+        this.router.navigate([path]).then();
     }
 
 

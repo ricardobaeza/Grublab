@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {UserService} from '../shared/firebase/user.service';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss']
+    selector: 'app-tabs',
+    templateUrl: 'tabs.page.html',
+    styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {}
+export class TabsPage {
+    constructor(private  userService: UserService) {
+        if (!this.userService.currentUser) {
+            this.userService.initiate();
+        }
+    }
+}

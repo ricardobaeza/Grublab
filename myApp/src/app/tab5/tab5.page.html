@@ -1,5 +1,7 @@
 <app-header></app-header>
-
 <ion-content>
-
+    <ion-item *ngIf="userService.currentUser">
+        Current User: {{userService.currentUser['name']}}
+        <ion-button slot="end" (click)="userService.signOut()">Sign Out</ion-button>
+    </ion-item>
 </ion-content>
