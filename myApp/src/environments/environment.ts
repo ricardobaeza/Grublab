@@ -3,7 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-<<<<<<< HEAD
   production: false,
   config: {
     apiKey: 'AIzaSyA4aGf4talRmFZZ6zqUa1oHtedgwTr_rgI',
@@ -13,9 +12,6 @@ export const environment = {
     storageBucket: 'grublab-mtech.appspot.com',
     messagingSenderId: '1085427423931'
   },
-=======
-  production: false
->>>>>>> 1602a3d938da36abbb9eca56082c4673038d6c79
 };
 
 /*
