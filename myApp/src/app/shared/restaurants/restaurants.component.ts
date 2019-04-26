@@ -20,3 +20,5 @@ export class RestaurantsComponent implements OnInit {
   }
 
 }
+
+// this is a really good comment
