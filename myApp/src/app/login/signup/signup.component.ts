@@ -35,6 +35,7 @@ export class SignupComponent implements OnInit {
         let newUser: User = {
             id: data.user.uid,
             name: this.name,
+            email: this.email,
         };
         this.userService.addUser(newUser)
             .then(_ => alert('Successfully added user'))

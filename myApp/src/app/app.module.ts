@@ -15,6 +15,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {HttpClientModule} from '@angular/common/http';
+import {IonicStorageModule} from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import {HttpClientModule} from '@angular/common/http';
       AngularFireDatabaseModule,
       AngularFirestoreModule,
       AngularFireAuthModule,
-      HttpClientModule
+      HttpClientModule,
+      IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,
