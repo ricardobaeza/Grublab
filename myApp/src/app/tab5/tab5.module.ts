@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { Tab5Page } from './tab5.page';
+import {HeaderComponent} from '../shared/header/header.component';
 
 const routes: Routes = [
   {
@@ -15,12 +16,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
-  declarations: [Tab5Page]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        RouterModule.forChild(routes)
+    ],
+    exports: [
+        HeaderComponent
+    ],
+    declarations: [Tab5Page, HeaderComponent]
 })
 export class Tab5PageModule {}
