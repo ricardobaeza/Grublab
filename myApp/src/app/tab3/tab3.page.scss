@@ -1,1 +1,20 @@
+$color : #FE7671;
 
+.logo{
+    width:50px;
+}
+.toolbar{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-flow:row;
+    width:100%;
+}
+.title{
+    font-size:40px;
+    letter-spacing: 1px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: $color;
+    padding-top:7px;
+    
+}
