@@ -10,8 +10,10 @@ export class Tab1Page implements OnInit {
   constructor(private httpService: HttpServiceService) {
 
   }
+  private locationData = {}
   ngOnInit() {
-    console.log('this is working');
-    this.httpService.getRestuarant("16774318").subscribe(data => {console.log(data)});
+    
   }
+
+
 }
