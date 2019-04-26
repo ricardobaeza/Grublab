@@ -1,17 +1,17 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>login</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ng-container  *ngIf="login">
-    <app-signin></app-signin>
-    <p>Don't have an account? <a href="javascript:void(0)" (click)="login = false">Sign up.</a> </p>
-  </ng-container>
+    <ng-container *ngIf="login">
+        <app-signin></app-signin>
+        <p>Don't have an account? <a href="javascript:void(0)" (click)="login = false">Sign up.</a></p>
+    </ng-container>
 
-  <ng-container  *ngIf="!login">
-    <app-signup></app-signup>
-    <p>Already have an account? <a href="javascript:void(0)" (click)="login = true">Sign in.</a> </p>
-  </ng-container>
+    <ng-container *ngIf="!login">
+        <app-signup></app-signup>
+        <p>Already have an account? <a href="javascript:void(0)" (click)="login = true">Sign in.</a></p>
+    </ng-container>
 </ion-content>

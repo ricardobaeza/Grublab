@@ -1,20 +1,28 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
+import {User} from '../user';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
 
-  usersRef: AngularFirestoreCollection<any>;
+    usersRef: AngularFirestoreCollection<any>;
 
-  constructor( private db: AngularFirestore ) {
-    this.usersRef = this.db.collection('users');
-  }
+    constructor(private db: AngularFirestore) {
+        this.usersRef = this.db.collection('users');
+    }
 
-  getAllUsers() {
-    this.db.collection('users');
-    return this.usersRef.valueChanges();
-  }
+    getAllUsers() {
+        return this.usersRef.valueChanges();
+    }
+
+    addUser(user: User) {
+        return this.usersRef.doc(user.id).set(user);
+    }
+
+    getUser(userID: string) {
+        return this.usersRef.doc(userID).valueChanges();
+    }
 
 }
