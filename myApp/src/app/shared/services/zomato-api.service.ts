@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Geolocation } from '@ionic-native/geolocation/ngx'
+import { last } from '@angular/router/src/utils/collection';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,17 +10,23 @@ export class ZomatoApiService {
 
   constructor( private http: HttpClient,
                private geolocation: Geolocation) { }
-  common = 'restaurant';
-  private apiUrl = 'https://developers.zomato.com/api/v2.1/' + this.common;
+  common = 'search';
+  private apiUrl = 'https://developers.zomato.com/api/v2.1/search'
 
-  getPlace(): Observable<any>{
-    return this.http.get<any>(this.apiUrl , {params: {apikey: '3059aec27009a71444cbfa438274aa73', res_id: '16774318'}})
+  getPlaceByCoords(lattiude, longitude) {
+    console.log("this is the lat: " + lattiude);
+    console.log("this is the long: " + longitude)
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '3059aec27009a71444cbfa438274aa73'}}
+      )
   }
 
-  getCurrentCoords() {
+  getCurrentCoords(callBack) {
+    console.log('loading ...')
     this.geolocation.getCurrentPosition().then((resp)=> {
-      console.log(resp.coords.latitude);
-      console.log(resp.coords.longitude);
+      
+      this.getPlaceByCoords(resp.coords.latitude, resp.coords.longitude).subscribe(data => {
+          callBack(data.restaurants);
+        })
     }).catch(err => { console.log(err)});
 
     let watch = this.geolocation.watchPosition();
@@ -27,5 +34,7 @@ export class ZomatoApiService {
       console.log(data);
     })
   }
+
+  
 
 }

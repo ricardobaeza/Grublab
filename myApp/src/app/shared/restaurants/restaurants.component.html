@@ -1,9 +1,9 @@
 
 <ion-card *ngFor="let item of allPlaces" class="restaurant-card">
-  <ion-img src="{{item.photos_url}}"></ion-img>
+  <ion-img src="{{item.restaurant.photos_url}}"></ion-img>
   <ion-card-header>
     <ion-card-subtitle></ion-card-subtitle>
-    <ion-card-title>{{item.name}}</ion-card-title>
+    <ion-card-title>{{item.restaurant.name}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <p>DESC</p>

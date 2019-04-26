@@ -13,11 +13,12 @@ export class RestaurantsComponent implements OnInit {
   allPlaces = [];
 
   ngOnInit() {
-    this.zomatoService.getPlace().subscribe(data => {
-      this.allPlaces.push(data)
-      this.zomatoService.getCurrentCoords();
-      console.log(data)
+    
+    this.zomatoService.getCurrentCoords(( data )=> { 
+      this.allPlaces = data;
+      console.log(this.allPlaces[0].restaurant);
     })
+    
   }
 
 }
