@@ -4,6 +4,7 @@ import {User} from '../user';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Storage} from '@ionic/storage';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -28,8 +29,8 @@ export class UserService {
         return this.usersRef.doc(userID).valueChanges();
     }
 
-    login(email: string, password: string) {
-        this.afAuth.auth.signInWithEmailAndPassword(email, password)
+    login(email: string, password: string): Promise<any> {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
             .then(data => this.loginSuccess(data, password))
             .catch(error => this.loginFail(error));
     }

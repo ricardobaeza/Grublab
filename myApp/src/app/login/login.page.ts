@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 })
 export class LoginPage implements OnInit {
 
+    loaded = false;
     login = true;
 
     constructor(private userService: UserService, private afAuth: AngularFireAuth,  private storage: Storage) {
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
         this.userService.getAllUsers().subscribe(data => console.log('users', data));
         this.storage.get('user').then(user => {
             if (user) {
-                this.userService.login(user.email, user.password);
+                this.userService.login(user.email, user.password).then(_ => this.loaded = true);
             }
         });
     }
