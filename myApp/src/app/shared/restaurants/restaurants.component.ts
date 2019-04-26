@@ -14,8 +14,7 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit() {
     this.zomatoService.getPlace().subscribe(data => {
-      this.allPlaces = data.categories
-      console.log(data)
+      this.allPlaces.push(data)
     })
   }
 
