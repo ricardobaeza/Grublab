@@ -14,7 +14,7 @@ export class ZomatoApiService {
   private apiUrl = 'https://developers.zomato.com/api/v2.1/search'
 
   getPlaceByCoords(lattiude, longitude) {
-    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '3059aec27009a71444cbfa438274aa73'}}
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '41e36201d45ae6b98260930280a74dbf'}}
       )
   }
 

@@ -11,6 +11,7 @@ export class UserService {
 
     usersRef: AngularFirestoreCollection<any>;
     currentUser: Object = null;
+
     constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) {
         this.usersRef = this.db.collection('users');
     }
@@ -44,7 +45,8 @@ export class UserService {
     signOut() {
         localStorage.clear();
         this.afAuth.auth.signOut().then();
-        this.redirect('/login')
+        this.redirect('/login');
+        window.location.reload();
     }
 
     redirect(path: string) {

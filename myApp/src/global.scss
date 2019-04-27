@@ -18,6 +18,15 @@
   color: #2ECC71
 }
 
+.spinner {
+  display: block;
+  margin: auto;
+  text-align: center;
+
+  width: 100px;
+  height: 100px;
+}
+
 * {
   font-family: 'Josefin Sans', sans-serif;
 }
