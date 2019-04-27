@@ -1,9 +1,6 @@
 <app-header></app-header>
 
 <ion-content>
-<!--    <ng-container *ngIf="!loaded">-->
-<!--        <ion-spinner name="crescent" class="main-loader" color="primary"></ion-spinner>-->
-<!--    </ng-container>-->
 
     <ng-container *ngIf="login">
         <app-signin></app-signin>
@@ -11,8 +8,10 @@
     </ng-container>
 
     <ng-container *ngIf="!login">
-        <app-signup></app-signup>
+        <app-signup (registered)="register()"></app-signup>
         <p>Already have an account? <a href="javascript:void(0)" (click)="login = true">Sign in.</a></p>
     </ng-container>
+
+    <p class="success-message">{{successMessage}}</p>
 
 </ion-content>

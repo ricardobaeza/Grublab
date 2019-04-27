@@ -10,12 +10,18 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class LoginPage implements OnInit {
 
     login = true;
+    successMessage: string;
 
-    constructor(private userService: UserService, private afAuth: AngularFireAuth,  private storage: Storage) {
+    constructor(private userService: UserService, private afAuth: AngularFireAuth) {
     }
 
     ngOnInit() {
         this.userService.getAllUsers().subscribe(data => console.log('users', data));
+    }
+
+    register() {
+        this.login = true;
+        this.successMessage='Successfully created account';
     }
 
 }

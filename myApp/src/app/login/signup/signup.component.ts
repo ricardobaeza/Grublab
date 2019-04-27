@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Output, EventEmitter, OnInit} from '@angular/core';
 import {UserService} from '../../shared/firebase/user.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from '../../shared/user';
@@ -10,10 +10,14 @@ import {User} from '../../shared/user';
 })
 export class SignupComponent implements OnInit {
 
+    @Output() registered = new EventEmitter<any>();
+
     name: string;
     email: string;
     password: string;
     confirmPassword: string;
+
+    errorMessage: string;
 
     constructor(private userService: UserService, private afAuth: AngularFireAuth) {
     }
@@ -23,7 +27,7 @@ export class SignupComponent implements OnInit {
 
     register() {
         if (this.password !== this.confirmPassword) {
-            alert('Passwords need to match!');
+            this.errorMessage = 'Passwords do not match';
             return;
         }
         this.afAuth.auth.createUserWithEmailAndPassword(this.email, this.password)
@@ -38,13 +42,15 @@ export class SignupComponent implements OnInit {
             email: this.email,
         };
         this.userService.addUser(newUser)
-            .then(_ => alert('Successfully added user'))
+            .then(_ => this.registered.emit(true))
             .catch(error => alert('Error adding user: ' + error));
     }
 
     registerFail(error) {
         if (error.code === "auth/email-already-in-use") {
-            alert("Email in use");
+            this.errorMessage = "There is already an account with that email";
+        } else {
+            this.errorMessage = error.message;
         }
     }
 
