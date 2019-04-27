@@ -1,24 +1,39 @@
 <app-header></app-header>
 <div *ngIf="isLoaded" class="container">
-  <div class="card">
-    <h1>{{resData.name}}</h1>
-    <ion-img src="{{resData.thumb ? resData.thumb : '../../../assets/na.png'}}" class="thumb"></ion-img>
-    <p [ngStyle]="{color: '#' + resData.user_rating.rating_color}">{{resData.user_rating.aggregate_rating}}</p>
-    <p [ngStyle]="{color: '#' + resData.user_rating.rating_color}">{{resData.user_rating.rating_text}}</p>
-    <span class="row">
+    <div class="card">
+        <h1>{{resData.name}}</h1>
+        <ion-img src="{{resData.thumb ? resData.thumb : '../../../assets/na.png'}}" class="thumb"></ion-img>
+        <p [ngStyle]="{color: '#' + resData.user_rating.rating_color}">{{resData.user_rating.aggregate_rating}}</p>
+        <p [ngStyle]="{color: '#' + resData.user_rating.rating_color}">{{resData.user_rating.rating_text}}</p>
+        <span class="row">
     <h3>Favorite</h3>
-    <ion-icon *ngIf="isFavorite" [ngStyle]="{color: 'pink'}" name="heart" class="icon" (click)="toggleHeart()"></ion-icon>
-    <ion-icon *ngIf="!isFavorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon" (click)="toggleHeart()"></ion-icon>
+    <ion-icon *ngIf="isFavorite" [ngStyle]="{color: 'pink'}" name="heart" class="icon"
+              (click)="toggleHeart()"></ion-icon>
+    <ion-icon *ngIf="!isFavorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon"
+              (click)="toggleHeart()"></ion-icon>
     </span>
-    <div class="backbutton" (click)='back()'>Back</div>
-  </div>
+        <div class="backbutton" (click)='back()'>Back</div>
+    </div>
 
-  <div class="comments">
-
-  </div>
+    <div class="comments-wrapper">
+        <div class="submit-comment">
+            <ion-input placeholder="Leave your comment here..."></ion-input>
+            <ion-button>Submit Comment</ion-button>
+        </div>
+        <div *ngIf="comments && comments.length > 1" class="comments">
+            <ion-card *ngFor="let comment of comments">
+                <ion-card-header>
+                    <ion-card-title>Username</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    {{comment['text']}}
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </div>
 
 </div>
 
 <div *ngIf="!isLoaded" class="container">
-  <ion-spinner class="loader"></ion-spinner>
+    <ion-spinner class="loader"></ion-spinner>
 </div>
