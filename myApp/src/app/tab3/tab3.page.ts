@@ -18,6 +18,7 @@ export class Tab3Page implements OnInit {
     }
 
     ngOnInit(): void {
+        //@ts-ignore
         this.userService.getFavorites().subscribe(doc => {
             if (typeof doc.data === 'function') {
                 let user = doc.data();

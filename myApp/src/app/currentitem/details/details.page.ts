@@ -31,6 +31,7 @@ export class DetailsPage implements OnInit {
 
         if (this.isFavorite === false) {
             this.isFavorite = true;
+            //@ts-ignore
             this.userService.favoriteRestaurant(this.route.snapshot.paramMap.get('id'));
         } else if (this.isFavorite === true) {
             this.isFavorite = false;
