@@ -48,12 +48,6 @@ export class RestaurantsComponent implements OnInit {
        this.isLoaded = true;
      })
     }
-    
-    
-
-
-    
-  
 
 
       this.zomatoService.getCurrentCoords(( data )=> { 
