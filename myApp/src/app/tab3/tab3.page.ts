@@ -23,11 +23,13 @@ export class Tab3Page implements OnInit {
             if (typeof doc.data === 'function') {
                 let user = doc.data();
                 let favorites = user.favorites;
-                favorites.forEach((fav) => {
-                    this.httpService.getRestuarant(fav).subscribe(data => {
-                        this.restaurants.push(data);
+                if (favorites) {
+                    favorites.forEach((fav) => {
+                        this.httpService.getRestuarant(fav).subscribe(data => {
+                            this.restaurants.push(data);
+                        });
                     });
-                });
+                }
             }
             this.loaded = true;
         });
