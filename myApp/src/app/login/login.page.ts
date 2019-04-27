@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../shared/firebase/user.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import { Storage } from '@ionic/storage';
 
 @Component({
     selector: 'app-login',

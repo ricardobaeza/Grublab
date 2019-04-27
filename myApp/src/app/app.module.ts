@@ -15,7 +15,6 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {HttpClientModule} from '@angular/common/http';
-import {IonicStorageModule} from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @NgModule({
@@ -31,7 +30,6 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
       AngularFirestoreModule,
       AngularFireAuthModule,
       HttpClientModule,
-      IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,
