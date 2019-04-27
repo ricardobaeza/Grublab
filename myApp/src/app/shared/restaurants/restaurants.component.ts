@@ -12,10 +12,13 @@ export class RestaurantsComponent implements OnInit {
 
   allPlaces = [];
 
+  isLoaded = false;
+
   ngOnInit() {
     
     this.zomatoService.getCurrentCoords(( data )=> { 
       this.allPlaces = data;
+      this.isLoaded = true;
     })
     
   }
