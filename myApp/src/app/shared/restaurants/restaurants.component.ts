@@ -16,7 +16,6 @@ export class RestaurantsComponent implements OnInit {
     
     this.zomatoService.getCurrentCoords(( data )=> { 
       this.allPlaces = data;
-      console.log(this.allPlaces[0].restaurant);
     })
     
   }
