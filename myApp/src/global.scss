@@ -9,3 +9,46 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.error-message {
+  color: #E74C3C;
+}
+
+.success-message {
+  color: #2ECC71
+}
+
+.spinner {
+  display: block;
+  margin: auto;
+  text-align: center;
+
+  width: 100px;
+  height: 100px;
+}
+
+.loadcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  color: #FE7671;
+}
+
+.restaurant-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}

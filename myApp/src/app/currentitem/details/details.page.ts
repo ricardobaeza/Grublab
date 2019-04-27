@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ZomatoApiService } from '../../shared/services/zomato-api.service';
 import { ActivatedRoute } from "@angular/router";
 import {Router} from '@angular/router';
+import {UserService} from '../../shared/firebase/user.service';
 
 @Component({
   selector: 'app-details',
@@ -10,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class DetailsPage implements OnInit {
 
-  constructor(private zomatoService: ZomatoApiService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private zomatoService: ZomatoApiService, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   isLoaded = false;
   isFavorite = false;
@@ -20,6 +21,7 @@ export class DetailsPage implements OnInit {
     
     if(this.isFavorite === false){
       this.isFavorite = true;
+      this.userService.favoriteRestaurant(this.route.snapshot.paramMap.get("id"));
     }
     else if(this.isFavorite === true){
       this.isFavorite = false;

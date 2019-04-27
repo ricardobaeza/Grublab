@@ -1,3 +1,16 @@
-<p>
-  restaurant works!
-</p>
+<ion-card class="card" >
+  <ion-img src="{{restaurant.thumb ? restaurant.thumb : '../../../assets/na.png'}}" class="thumb"></ion-img>
+  <ion-card-header>
+    <ion-card-subtitle></ion-card-subtitle>
+    <ion-card-title>{{restaurant.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p [ngStyle]="{color: '#' + restaurant.user_rating.rating_color}">{{restaurant.user_rating.aggregate_rating}}</p>
+    <p [ngStyle]="{color: '#' + restaurant.user_rating.rating_color}">{{restaurant.user_rating.rating_text}}</p>
+    <span class="row">
+    <h3>Favorite</h3>
+    <ion-icon *ngIf="favorite" [ngStyle]="{color: 'pink'}" name="heart" class="icon" (click)="toggleHeart()"></ion-icon>
+    <ion-icon *ngIf="!favorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon" (click)="toggleHeart()"></ion-icon>
+    </span>
+  </ion-card-content>
+</ion-card>

@@ -16,6 +16,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {HttpClientModule} from '@angular/common/http';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { ModalPageModule } from './modal/modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
       AngularFirestoreModule,
       AngularFireAuthModule,
       HttpClientModule,
+      ModalPageModule
   ],
   providers: [
     StatusBar,
