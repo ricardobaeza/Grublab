@@ -31,14 +31,15 @@ export class ZomatoApiService {
 
   getCurrentCoords(callBack) {
     console.log('loading...');
-    this.geolocation.getCurrentPosition().then((resp)=> {
+    this.geolocation.getCurrentPosition({timeout:5000}).then((resp)=> {
+      console.log('got response');
       if(JSON.parse(sessionStorage.getItem('filter'))) {
         this.filter(resp.coords.latitude, resp.coords.longitude);
       }
       this.getPlaceByCoords(resp.coords.latitude, resp.coords.longitude).subscribe(data => {
           callBack(data.restaurants);
         })
-    }).catch(err => { console.log(err)});
+    }).catch(err => { alert('There was a problem retrieving your location...'); console.log(err)});
 
     let watch = this.geolocation.watchPosition();
     watch.subscribe(data => {
