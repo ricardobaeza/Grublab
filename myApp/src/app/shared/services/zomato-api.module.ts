@@ -8,18 +8,20 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import {SharedModule} from '../shared.module';
 
 
 
 @NgModule({
-  imports: [
-    HttpClientModule,
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    
+    imports: [
+        HttpClientModule,
+        IonicModule,
+        CommonModule,
+        FormsModule,
+        SharedModule,
 
-  ],
+
+    ],
   exports: [
     RestaurantsComponent
   ],
