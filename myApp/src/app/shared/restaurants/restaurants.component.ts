@@ -53,7 +53,7 @@ export class RestaurantsComponent implements OnInit {
 
 
     
-  }
+  
 
 
       this.zomatoService.getCurrentCoords(( data )=> { 
