@@ -11,7 +11,7 @@ export class LoginPage implements OnInit {
 
     login = true;
 
-    constructor(private userService: UserService, private afAuth: AngularFireAuth,  private storage: Storage) {
+    constructor(private userService: UserService, private afAuth: AngularFireAuth) {
     }
 
     ngOnInit() {
