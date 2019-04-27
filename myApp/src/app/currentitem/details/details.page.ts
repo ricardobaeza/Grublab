@@ -25,6 +25,7 @@ export class DetailsPage implements OnInit {
     isFavorite = false;
     resData = {};
     comments = [];
+    newComment: string;
 
     toggleHeart() {
 
@@ -58,6 +59,10 @@ export class DetailsPage implements OnInit {
                 }
             });
         });
+    }
+
+    submitNewComment() {
+        this.commentsService.addComment(this.newComment, this.route.snapshot.paramMap.get('id'), this.userService.currentUser['id']);
     }
 
 }
