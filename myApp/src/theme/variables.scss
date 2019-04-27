@@ -2,9 +2,13 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
+// $tab-button-md-active-color:              color(#FE7671, primary);
+// $tab-button-md-inactive-color:            #8c8c8c;
 :root {
+
+ 
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #FE7671;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
