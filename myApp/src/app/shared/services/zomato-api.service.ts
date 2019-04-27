@@ -17,11 +17,13 @@ export class ZomatoApiService {
   common = 'search';
   private apiUrl = 'https://developers.zomato.com/api/v2.1/search';
 
-  private apikey = '5587d2c8170822eac9a965523c09172a';
+  private apikey = 'f5404c3efe49b9484205a26b9f060b01';
 
   getPlaceByCoords(lattiude, longitude) {
 
-    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '13ed5d528a070513e78129a8ad3999e0'}}
+
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: 'f5404c3efe49b9484205a26b9f060b01'}}
+
       )
   }
   getOneByID(id) {

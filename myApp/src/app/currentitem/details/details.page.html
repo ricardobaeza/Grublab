@@ -13,7 +13,8 @@
     <ion-icon *ngIf="!isFavorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon"
               (click)="toggleHeart()"></ion-icon>
     </span>
-    <h4>{{resData.location.address}}</h4>
+        <h4>{{resData.location.address}}</h4>
+
         <div class="backbutton" (click)='back()'>Back</div>
     </div>
 

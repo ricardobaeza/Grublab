@@ -42,6 +42,10 @@ export class Tab3Page implements OnInit {
         });
     }
 
+    cardonClick(id){
+        this.userService.redirect('details/' + id);
+    }
+
     ionViewDidEnter() {
         this.getFavorites();
     }
