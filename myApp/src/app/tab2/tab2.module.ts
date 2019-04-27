@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import {SharedModule} from '../shared/shared.module';
+import {ServicesModule} from '../shared/services/zomato-api.module';
 
 @NgModule({
     imports: [
@@ -13,6 +14,7 @@ import {SharedModule} from '../shared/shared.module';
         FormsModule,
         RouterModule.forChild([{path: '', component: Tab2Page}]),
         SharedModule,
+        ServicesModule,
     ],
   declarations: [Tab2Page]
 })

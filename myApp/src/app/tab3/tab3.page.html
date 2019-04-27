@@ -5,7 +5,7 @@
         <ion-spinner class="loader"></ion-spinner>
     </div>
 
-    <div *ngIf="loaded" class="restaurant-wrapper">
+    <div *ngIf="loaded && restaurants.length > 1" class="restaurant-wrapper">
         <app-restaurant *ngFor="let restaurant of restaurants" [restaurant]="restaurant" [favorite]="true"></app-restaurant>
     </div>
     <ng-container *ngIf="loaded && restaurants.length < 1">
