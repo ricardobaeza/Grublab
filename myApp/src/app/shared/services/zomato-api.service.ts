@@ -12,10 +12,17 @@ export class ZomatoApiService {
                private geolocation: Geolocation) { }
   common = 'search';
   private apiUrl = 'https://developers.zomato.com/api/v2.1/search'
+  private apikey = 'dfbf29d67d1fd3a06619e13a5341d82f'
 
   getPlaceByCoords(lattiude, longitude) {
-    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '41e36201d45ae6b98260930280a74dbf'}}
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: this.apikey}}
       )
+  }
+
+  getOneByID(id){
+    console.log("ITS CALLED")
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/restaurant`, {params: {apikey: this.apikey, res_id: id}}
+    )
   }
 
   getCurrentCoords(callBack) {
