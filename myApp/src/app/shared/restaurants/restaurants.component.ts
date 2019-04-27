@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ZomatoApiService } from '../services/zomato-api.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx'
+
 @Component({
   selector: 'app-restaurants',
   templateUrl: './restaurants.component.html',
@@ -15,14 +16,13 @@ export class RestaurantsComponent implements OnInit {
   isLoaded = false;
 
   ngOnInit() {
-    
-    this.zomatoService.getCurrentCoords(( data )=> { 
-      this.allPlaces = data;
-      this.isLoaded = true;
-    })
-    
-  }
 
+      this.zomatoService.getCurrentCoords(( data )=> { 
+        console.log("loading..")
+        this.allPlaces = data;
+        this.isLoaded = true;
+      })
+  }
 }
 
 // this is a really good comment

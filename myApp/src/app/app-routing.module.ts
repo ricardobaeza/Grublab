@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'restaurant-info', loadChildren: './restaurant-info/restaurant-info.module#RestaurantInfoPageModule' },
   { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' },
+  { path: 'filter/:id', loadChildren: "./filter/filter.module#FilterPageModule"}
   
 
 ];

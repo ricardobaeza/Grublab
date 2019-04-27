@@ -1,12 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>modal</ion-title>
+  <div id="modal-title">
     <ion-icon name="close-circle" (click)='closeModal()'></ion-icon>
+  </div>
+  <ion-toolbar>
+    <ion-title>Pick your category</ion-title>
 
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
-  
+    <ion-card *ngFor= 'let category of categories' (click)="submitCategory(category.categories.id)">
+      <ion-card-title>
+        {{ category.categories.name }}
+      </ion-card-title>
+    </ion-card>
 </ion-content>
