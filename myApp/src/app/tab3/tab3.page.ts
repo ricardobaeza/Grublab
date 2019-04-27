@@ -18,21 +18,32 @@ export class Tab3Page implements OnInit {
     }
 
     ngOnInit(): void {
-        //@ts-ignore
+
+    }
+
+    getFavorites() {
+        this.loaded = false;
+        this.restaurants = [];
         this.userService.getFavorites().subscribe(doc => {
-            if (typeof doc.data === 'function') {
-                let user = doc.data();
-                let favorites = user.favorites;
-                if (favorites) {
-                    favorites.forEach((fav) => {
-                        this.httpService.getRestuarant(fav).subscribe(data => {
-                            this.restaurants.push(data);
-                        });
-                    });
-                }
+            let user = doc.data();
+            let favorites = user.favorites;
+            if (favorites.length < 1) {
+                this.loaded = true;
             }
-            this.loaded = true;
+            if (favorites && favorites !== this.restaurants) {
+                favorites.forEach((fav) => {
+                    this.loaded = false;
+                    this.httpService.getRestuarant(fav).subscribe(data => {
+                        this.restaurants.push(data);
+                        this.loaded = true;
+                    });
+                });
+            }
         });
+    }
+
+    ionViewDidEnter() {
+        this.getFavorites();
     }
 
 }
