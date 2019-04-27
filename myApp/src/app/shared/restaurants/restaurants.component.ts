@@ -23,14 +23,13 @@ export class RestaurantsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    this.zomatoService.getCurrentCoords(( data )=> { 
-      this.allPlaces = data;
-      this.isLoaded = true;
-    })
-    
-  }
 
+      this.zomatoService.getCurrentCoords(( data )=> { 
+        console.log("loading..")
+        this.allPlaces = data;
+        this.isLoaded = true;
+      })
+  }
 }
 
 // this is a really good comment

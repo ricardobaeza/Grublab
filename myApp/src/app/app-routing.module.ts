@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './currentitem/details/details.module#DetailsPageModule' },
   { path: 'restaurant-info', loadChildren: './restaurant-info/restaurant-info.module#RestaurantInfoPageModule' },
   { path: 'modal', loadChildren: './modal/modal.module#ModalPageModule' },
+  { path: 'filter/:id', loadChildren: "./filter/filter.module#FilterPageModule"}
+  
 
 ];
 @NgModule({
