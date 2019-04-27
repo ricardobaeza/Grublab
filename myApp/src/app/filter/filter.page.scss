@@ -1,0 +1,49 @@
+.welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+  }
+  
+  .card{
+    width:300px;
+    height:360px;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor:pointer;
+  }
+  
+  .card:hover{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  
+  }
+  $color : #FE7671;
+  
+  .logo{
+      width:50px;
+  }
+  .toolbar{
+      display:flex;
+      justify-content: center;
+      align-items:center;
+      flex-flow:row;
+      width:100%;
+  }
+  .title{
+      font-size:40px;
+      letter-spacing: 1px;
+      font-family: 'Josefin Sans', sans-serif;
+      color: $color;
+      padding-top:7px;
+  }
+  ion-toolbar.ios{
+    height:100px;
+  }
+  .toolbar.ios{
+    height:100px;
+  }
+
+  .thumb{
+    width:200px;
+    margin:0 auto;
+    margin-top:30px;
+  }
+  
