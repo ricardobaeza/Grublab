@@ -1,21 +1,11 @@
-<div class="container" *ngIf="isLoaded">
-<ion-card *ngFor="let item of allPlaces" class="card" (click)='cardonClick(this.item.restaurant.id)'>
-  <ion-img src="{{item.restaurant.thumb ? item.restaurant.thumb : '../../../assets/na.png'}}" class="thumb"></ion-img>
-  <ion-card-header>
-    <ion-card-subtitle></ion-card-subtitle>
-    <ion-card-title>{{item.restaurant.name}}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <p [ngStyle]="{color: '#' + item.restaurant.user_rating.rating_color}">{{item.restaurant.user_rating.aggregate_rating}}</p>
-    <p [ngStyle]="{color: '#' + item.restaurant.user_rating.rating_color}">{{item.restaurant.user_rating.rating_text}}</p>
-    <span class="row">
-    <h3>Favorite</h3>
-    <ion-icon *ngIf="isFavorite" [ngStyle]="{color: 'pink'}" name="heart" class="icon" (click)="toggleHeart()"></ion-icon>
-    <ion-icon *ngIf="!isFavorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon" (click)="toggleHeart()"></ion-icon>
-    </span>
-  </ion-card-content>
-</ion-card>
+<div class="restaurant-wrapper" *ngIf="isLoaded">
+    <app-restaurant
+            *ngFor="let item of allPlaces"
+            class="card"
+            (click)='cardonClick(this.item.restaurant.id)'
+            [restaurant]="item.restaurant">
+    </app-restaurant>
 </div>
-<div class="loadcontainer"  *ngIf="!isLoaded" >
-  <ion-spinner class="loader"></ion-spinner>
+<div class="loadcontainer" *ngIf="!isLoaded">
+    <ion-spinner class="loader"></ion-spinner>
 </div>

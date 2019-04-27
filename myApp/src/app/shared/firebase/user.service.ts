@@ -66,11 +66,40 @@ export class UserService {
         this.usersRef.doc(this.currentUser['id']).get().subscribe(doc => {
             user = doc.data();
             let favorites = user.favorites;
-            favorites.push(restaurantID);
-            this.usersRef.doc(this.currentUser['id']).update({'favorites': favorites})
-                .then(_ => console.log('Success!'))
-                .catch(error => console.log('Error updating favorites: ' , error));
+            if (this.isInList(favorites, restaurantID)) {
+                let newFavorites = [];
+                for (let i = 0; i < favorites.length; i++) {
+                    if (favorites[i] !== restaurantID) {
+                        newFavorites.push(favorites[i]);
+                    }
+                }
+                this.usersRef.doc(this.currentUser['id']).set({'favorites': newFavorites})
+                    .then(_ => console.log('Removed favorite'))
+                    .catch(error => console.log('Error updating favorites: ' , error));
+            } else {
+                favorites.push(restaurantID);
+                this.usersRef.doc(this.currentUser['id']).update({'favorites': favorites})
+                    .then(_ => console.log('Added favorite'))
+                    .catch(error => console.log('Error updating favorites: ' , error));
+            }
         });
     }
+
+    isInList(arr: any[], value: any): boolean {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    getFavorites() {
+        if (this.currentUser) {
+            return this.usersRef.doc(this.currentUser['id']).get();
+        }
+        return null;
+    }
+
 
 }
