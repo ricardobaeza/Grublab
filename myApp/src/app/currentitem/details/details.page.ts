@@ -48,22 +48,34 @@ export class DetailsPage implements OnInit {
             this.resData = data;
             this.isLoaded = true;
         });
+        this.getComments();
     }
 
     getComments() {
+        this.comments = [];
         this.commentsService.getComments().subscribe(collection => {
             let docs = collection.docs;
             docs.forEach((doc) => {
                 let comment = doc.data();
                 if (comment['restaurantID'] === this.route.snapshot.paramMap.get('id')) {
-                    this.comments.push(comment);
+                    console.log(comment['userID']);
+                    this.userService.getUserOnce(comment['userID']).subscribe(user => {
+                        console.log(user.data());
+                        comment['username'] = user.data()['name'];
+                        this.comments.push(comment);
+                    });
                 }
             });
         });
     }
 
     submitNewComment() {
-        this.commentsService.addComment(this.newComment, this.route.snapshot.paramMap.get('id'), this.userService.currentUser['id']);
+        if (this.userService.currentUser['id']) {
+            this.commentsService.addComment(this.newComment, this.userService.currentUser['id'], this.route.snapshot.paramMap.get('id') )
+                .then(_ => this.getComments());
+        } else {
+            console.log('Error: Not logged in');
+        }
     }
 
 }
