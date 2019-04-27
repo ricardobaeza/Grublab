@@ -10,6 +10,7 @@
     <ion-icon *ngIf="isFavorite" [ngStyle]="{color: 'pink'}" name="heart" class="icon" (click)="toggleHeart()"></ion-icon>
     <ion-icon *ngIf="!isFavorite" [ngStyle]="{color: 'grey'}" name="heart-empty" class="icon" (click)="toggleHeart()"></ion-icon>
     </span>
+    <div class="backbutton" (click)='back()'>Back</div>
   </div>
 </div>
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ZomatoApiService } from '../../shared/services/zomato-api.service';
 import { ActivatedRoute } from "@angular/router";
+import {Router} from '@angular/router';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -8,7 +10,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class DetailsPage implements OnInit {
 
-  constructor(private zomatoService: ZomatoApiService, private route: ActivatedRoute) { }
+  constructor(private zomatoService: ZomatoApiService, private route: ActivatedRoute, private router: Router) { }
 
   isLoaded = false;
   isFavorite = false;
@@ -23,6 +25,10 @@ export class DetailsPage implements OnInit {
       this.isFavorite = false;
     }
     console.log(this.isFavorite)
+  }
+
+  back(){
+    this.router.navigate(['/tabs/tab1'])
   }
 
   ngOnInit() {
