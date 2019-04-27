@@ -31,7 +31,7 @@ import { ModalPageModule } from './modal/modal.module';
       AngularFirestoreModule,
       AngularFireAuthModule,
       HttpClientModule,
-      ModalPageModule
+      ModalPageModule,
   ],
   providers: [
     StatusBar,
