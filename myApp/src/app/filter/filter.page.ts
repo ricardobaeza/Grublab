@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from "@angular/router";
+import { ActivatedRoute, Router} from "@angular/router";
 import { ZomatoApiService } from '../shared/services/zomato-api.service';
 import { identity } from 'rxjs';
 
@@ -13,7 +13,8 @@ export class FilterPage implements OnInit {
   isLoaded = false;
   constructor(
               private route: ActivatedRoute,
-              private apiservice: ZomatoApiService
+              private apiservice: ZomatoApiService,
+              private router: Router
               ) { }
 
   ngOnInit() {
@@ -23,6 +24,10 @@ export class FilterPage implements OnInit {
       this.isLoaded = true;
       console.log(this.filteredArray);
     });
+  }
+
+  navigateItem(id) {
+    this.router.navigate(['/details/' + id]);
   }
 
 }
