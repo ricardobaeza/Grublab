@@ -10,6 +10,8 @@ export class TabsPage {
     constructor(private  userService: UserService) {
         if (!this.userService.currentUser) {
             this.userService.initiate();
+        } else {
+            this.userService.favoriteRestaurant('42');
         }
     }
 }

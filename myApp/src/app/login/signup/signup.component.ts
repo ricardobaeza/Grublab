@@ -6,7 +6,7 @@ import {User} from '../../shared/user';
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
-    styleUrls: ['./signup.component.scss'],
+    styleUrls: ['./signup.component.scss', '../login.page.scss'],
 })
 export class SignupComponent implements OnInit {
 

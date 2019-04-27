@@ -59,4 +59,16 @@ export class UserService {
         localStorage.setItem('user', JSON.stringify(user));
     }
 
+    favoriteRestaurant(restaurantID: string) {
+        let user;
+        this.usersRef.doc(this.currentUser['id']).get().subscribe(doc => {
+            user = doc.data();
+            let favorites = user.favorites;
+            favorites.push(restaurantID);
+            this.usersRef.doc(this.currentUser['id']).update({'favorites': favorites})
+                .then(_ => console.log('Success!'))
+                .catch(error => console.log('Error updating favorites: ' , error));
+        });
+    }
+
 }
