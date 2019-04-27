@@ -42,6 +42,10 @@ export class UserService {
         return this.usersRef.doc(userID).valueChanges();
     }
 
+    getUserOnce(userID: string) {
+        return this.usersRef.doc(userID).get();
+    }
+
     signOut() {
         localStorage.clear();
         this.afAuth.auth.signOut().then();
