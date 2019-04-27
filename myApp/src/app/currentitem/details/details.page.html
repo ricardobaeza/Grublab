@@ -25,6 +25,8 @@
             <ion-card *ngFor="let comment of comments">
                 <ion-card-header>
                     <ion-card-title>{{comment['username']}}</ion-card-title>
+                    <ion-card-subtitle>Date: {{comment['date']}}</ion-card-subtitle>
+                    <ion-card-subtitle>Time Added: {{comment['time']}}</ion-card-subtitle>
                 </ion-card-header>
                 <ion-card-content>
                     {{comment['text']}}

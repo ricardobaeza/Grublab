@@ -27,7 +27,7 @@ export class Tab3Page implements OnInit {
         this.userService.getFavorites().subscribe(doc => {
             let user = doc.data();
             let favorites = user.favorites;
-            if (favorites.length < 1) {
+            if (!favorites || (favorites && favorites.length < 1)) {
                 this.loaded = true;
             }
             if (favorites && favorites !== this.restaurants) {
