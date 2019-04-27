@@ -20,7 +20,7 @@ export class ZomatoApiService {
 
   getPlaceByCoords(lattiude, longitude) {
 
-    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: 'f715d3ed28efe14c27e352c0ae007959'}}
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '3a4ce51a6177777d251db2b2bda3fa83'}}
       )
   }
   getOneByID(id) {
@@ -46,7 +46,7 @@ export class ZomatoApiService {
   }
 
   filterGet(lattiude, longitude) {
-     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}&category=${JSON.parse(sessionStorage.getItem('filter'))}`, {params: {apikey: 'f715d3ed28efe14c27e352c0ae007959'}})
+     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}&category=${JSON.parse(sessionStorage.getItem('filter'))}`, {params: {apikey: '3a4ce51a6177777d251db2b2bda3fa83'}})
       .subscribe(data => {
         console.log(data);
       })
@@ -60,7 +60,7 @@ export class ZomatoApiService {
   }
 
   getCategories(callBack) {
-    this.http.get<any>('https://developers.zomato.com/api/v2.1/categories', {params: {apikey: 'f715d3ed28efe14c27e352c0ae007959'}}).subscribe(data => {
+    this.http.get<any>('https://developers.zomato.com/api/v2.1/categories', {params: {apikey: '3a4ce51a6177777d251db2b2bda3fa83'}}).subscribe(data => {
       callBack(data.categories);
     })
   }
@@ -70,7 +70,7 @@ export class ZomatoApiService {
   }
   getByFilter(id, callBack) {
       
-     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=40.4357969&lon=-111.8690305&category=${id}`, {params: {apikey:"f715d3ed28efe14c27e352c0ae007959"}}).subscribe(data=> {
+     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=40.4357969&lon=-111.8690305&category=${id}`, {params: {apikey:"3a4ce51a6177777d251db2b2bda3fa83"}}).subscribe(data=> {
       callBack(data);
      })
 
