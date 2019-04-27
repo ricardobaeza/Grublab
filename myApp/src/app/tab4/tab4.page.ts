@@ -17,7 +17,13 @@ export class Tab4Page implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    getComments() {
         this.commentsService.getComments().subscribe(collection => {
+            this.loaded = false;
+            this.comments = [];
             let docs = collection.docs;
             docs.forEach((doc) => {
                 let comment = doc.data();
@@ -31,6 +37,10 @@ export class Tab4Page implements OnInit {
             });
             this.loaded = true;
         });
+    }
+
+    ionViewDidEnter() {
+        this.getComments();
     }
 
 }
