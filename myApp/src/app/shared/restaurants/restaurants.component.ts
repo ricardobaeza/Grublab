@@ -32,6 +32,7 @@ export class RestaurantsComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.currentPath = window.location.pathname.split("/").pop();
 
     if(this.currentPath == 'tab1'){
@@ -54,6 +55,13 @@ export class RestaurantsComponent implements OnInit {
     
   }
 
+
+      this.zomatoService.getCurrentCoords(( data )=> { 
+        console.log("loading..")
+        this.allPlaces = data;
+        this.isLoaded = true;
+      })
+  }
 }
 
 // this is a really good comment

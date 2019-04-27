@@ -1,0 +1,15 @@
+<div class="container" *ngIf="isLoaded">
+    <ion-card *ngFor="let item of filteredArray" class="card">
+      <ion-img src="{{item.restaurant.thumb ? item.restaurant.thumb : '../../../assets/na.png'}}" class="thumb"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title>{{item.restaurant.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p [ngClass]="{color: '#' + item.restaurant.user_rating.rating_color}">{{item.restaurant.user_rating.aggregate_rating}}</p>
+      </ion-card-content>
+    </ion-card>
+    </div>
+    <div class="loadcontainer"  *ngIf="!isLoaded" >
+    <ion-spinner color="primary" class="loader"></ion-spinner>
+  </div>
