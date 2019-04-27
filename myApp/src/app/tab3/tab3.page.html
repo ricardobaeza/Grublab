@@ -6,7 +6,7 @@
     </div>
 
     <div *ngIf="loaded && restaurants.length >= 1" class="restaurant-wrapper">
-        <app-restaurant *ngFor="let restaurant of restaurants" [restaurant]="restaurant" [favorite]="true"></app-restaurant>
+        <app-restaurant *ngFor="let restaurant of restaurants" [restaurant]="restaurant" [favorite]="true" (click)='cardonClick(restaurant.id)'></app-restaurant>
     </div>
     <ng-container *ngIf="loaded && restaurants.length < 1">
         <h3>No favorites</h3>
