@@ -17,11 +17,13 @@ export class ZomatoApiService {
   common = 'search';
   private apiUrl = 'https://developers.zomato.com/api/v2.1/search';
 
-  private apikey = 'f5404c3efe49b9484205a26b9f060b01';
+  private apikey = '09b80cb5a6d1d2e016908776f0ee13f0';
 
   getPlaceByCoords(lattiude, longitude) {
 
-    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: 'f5404c3efe49b9484205a26b9f060b01'}}
+
+    return this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}`, {params: {apikey: '09b80cb5a6d1d2e016908776f0ee13f0'}}
+
       )
   }
   getOneByID(id) {
@@ -48,7 +50,7 @@ export class ZomatoApiService {
   }
 
   filterGet(lattiude, longitude) {
-     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}&category=${JSON.parse(sessionStorage.getItem('filter'))}`, {params: {apikey: '3a4ce51a6177777d251db2b2bda3fa83'}})
+     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=${lattiude}&lon=${longitude}&category=${JSON.parse(sessionStorage.getItem('filter'))}`, {params: {apikey: '13ed5d528a070513e78129a8ad3999e0'}})
       .subscribe(data => {
         console.log(data);
       })
@@ -62,7 +64,7 @@ export class ZomatoApiService {
   }
 
   getCategories(callBack) {
-    this.http.get<any>('https://developers.zomato.com/api/v2.1/categories', {params: {apikey: '3a4ce51a6177777d251db2b2bda3fa83'}}).subscribe(data => {
+    this.http.get<any>('https://developers.zomato.com/api/v2.1/categories', {params: {apikey: '13ed5d528a070513e78129a8ad3999e0'}}).subscribe(data => {
       callBack(data.categories);
     })
   }
@@ -72,7 +74,7 @@ export class ZomatoApiService {
   }
   getByFilter(id, callBack) {
       
-     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=40.4357969&lon=-111.8690305&category=${id}`, {params: {apikey:"3a4ce51a6177777d251db2b2bda3fa83"}}).subscribe(data=> {
+     this.http.get<any>(`https://developers.zomato.com/api/v2.1/search?lat=40.4357969&lon=-111.8690305&category=${id}`, {params: {apikey:"13ed5d528a070513e78129a8ad3999e0"}}).subscribe(data=> {
       callBack(data);
      })
 

@@ -13,10 +13,10 @@ import {UserService} from '../shared/firebase/user.service';
 
 export class RestaurantComponent implements OnInit {
 
-    @Input() restaurant: Object;
+    @Input() restaurant: any;
     @Input() favorite = false;
 
-    constructor(private usersService: UserService) {
+    constructor(public usersService: UserService) {
     }
 
     ngOnInit() {
