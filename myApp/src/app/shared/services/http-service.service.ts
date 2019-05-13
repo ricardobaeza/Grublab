@@ -12,7 +12,7 @@ export class HttpServiceService {
   constructor(private http: HttpClient) { }
 
   getRestuarant(restaurantId): Observable<any> {
-    return this.http.get(`https://developers.zomato.com/api/v2.1/restaurant`, {params: {apikey: 'f5404c3efe49b9484205a26b9f060b01', res_id: restaurantId}})
+    return this.http.get(`https://developers.zomato.com/api/v2.1/restaurant`, {params: {apikey: '09b80cb5a6d1d2e016908776f0ee13f0', res_id: restaurantId}})
 
   }
 

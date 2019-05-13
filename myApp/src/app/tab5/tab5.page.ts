@@ -9,7 +9,7 @@ import {UserService} from '../shared/firebase/user.service';
 })
 export class Tab5Page implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
 
